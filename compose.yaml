@@ -1,0 +1,85 @@
+version: "3.8"
+
+services:
+  execution:
+    image: ethereum/client-go:v1.15.0
+    command:
+      - --networkid=20220915
+      - --state.scheme=path
+      - --verbosity=3
+      - --datadir=/execution-data
+      - --http
+      - --http.addr=0.0.0.0
+      - --http.port=8545
+      - --http.vhosts=*
+      - --http.corsdomain=*
+      - --http.api=admin,engine,net,eth,web3,debug
+      - --ws
+      - --ws.addr=0.0.0.0
+      - --ws.port=8546
+      - --ws.api=admin,engine,net,eth,web3,debug
+      - --ws.origins=*
+      - --allow-insecure-unlock
+      - --nat=extip:${IP_ADDRESS}
+      - --authrpc.port=8551
+      - --authrpc.addr=0.0.0.0
+      - --authrpc.vhosts=*
+      - --authrpc.jwtsecret=/network-config/jwt/jwtsecret
+      - --syncmode=full
+      - --rpc.allow-unprotected-txs
+      - --metrics
+      - --metrics.addr=0.0.0.0
+      - --metrics.port=6060
+      - --port=30303
+      - --discovery.port=30303
+    volumes:
+      - ./execution-data:/execution-data
+      - ./network-config:/network-config
+    ports:
+      - "8545:8545" 
+      - "8546:8546" 
+      - "8551:8551" 
+      - "6060:6060" 
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+    restart: unless-stopped
+
+  beacon:
+    image: sigp/lighthouse:v6.0.1
+    command:
+      - lighthouse
+      - beacon_node
+      - --debug-level=info
+      - --datadir=/consensus-data
+      - --testnet-dir=/network-config
+      - --enr-address=${IP_ADDRESS}
+      - --enr-udp-port=9000
+      - --enr-tcp-port=9000
+      - --enr-quic-port=9001
+      - --listen-address=0.0.0.0
+      - --port=9000
+      - --http
+      - --http-address=0.0.0.0
+      - --http-port=5052
+      - --execution-endpoints=http://execution:8551
+      - --jwt-secrets=/network-config/jwt/jwtsecret
+      - --suggested-fee-recipient=0xa322A95eD5d02cEA609b67ac2DF0b18F2Dba452d
+      - --subscribe-all-subnets
+      - --import-all-attestations
+      - --metrics
+      - --metrics-address=0.0.0.0
+      - --metrics-allow-origin=*
+      - --metrics-port=5054
+      - --disable-peer-scoring
+    volumes:
+      - ./consensus-data:/consensus-data 
+      - ./network-config:/network-config
+    ports:
+      - "9000:9000/tcp"
+      - "9000:9000/udp"
+      - "9001:9001/udp"
+      - "5052:5052"
+      - "5054:5054"
+    depends_on:
+      - execution
+    restart: unless-stopped
