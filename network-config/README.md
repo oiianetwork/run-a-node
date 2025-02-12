@@ -10,12 +10,13 @@ This repository is primarily a resource for developers.
 - **Default RPC URL**: `https://rpc.oiia.network`
 - **Chain ID**: `20220915`
 - **Currency Symbol**: `OIIA`
-- **Block Explorer URL**: [https://dora.oiia.network](https://dora.oiia.network)
+- **Blockscout Explorer URL**: [https://explorer.oiia.network](https://explorer.oiia.network)
+- **Beacon Explorer URL**: [https://dora.oiia.network](https://dora.oiia.network)
 
 ## Genesis information
 
 ```yaml
-genesis_time: 1739272271
+genesis_time: 1739362332
 genesis_validators_root: 0x3b179a35d0b0ff66f969a6ec6036277bc6992ee7e1033ced7debcd8a7ec063f5
 genesis_validators_count: 128
 genesis_active_validators_count: 128
@@ -29,22 +30,17 @@ deposit_contract: 0x4242424242424242424242424242424242424242
 
 -  Enode ID
 ```
-enode://50be3b938bdafd1cda14bfef7ef6ebbdb37c736b07605ca5a3eb2b361fe8e8992e8f571fc46d8963b3d80a7d95a33e5c68564ce01e3a3ae598ed783e98dacf56@149.28.146.88:30303
+enode://47b03b7aac55f51bb67dc09996710773acab29c6e1850d844812d094def3b269d4bb13cd489ac12bbfbdc3d9015ceed873b518f2333c5677e1f6e1fb9cb321df@149.28.146.88:30303
 ```
 
 ### Consensus layer
 
 - Peer ID
 ```
-16Uiu2HAmGcc9mQTxP3SwcqWz5fyCgY1BeMbzQX2xQCft2RLYGurg
+16Uiu2HAmDWLjnsoWqrnY4hdJso4c15W66MCesk2wzcoKUPLXG6JT
 ```
 
 - ENR
 ```
-enr:-MS4QMLDTpf2ZOfrjMbboyVeElozrlTG6IxDSmEEj2-wrvOkb5i3gKAVD9f0PMpqIwSbMIkZ4c29yVPoAg1MHlWCxEIBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpChTr4sYAAAANAHAAAAAAAAgmlkgnY0gmlwhJUckliEcXVpY4IjKYlzZWNwMjU2azGhAzrSfGfUKD0R0oGc6nYZ3byjaU3hApuwYESDHM49HnI5iHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
-```
-
-- Static address
-```
-/ip4/0.0.0.0/tcp/9000/p2p/16Uiu2HAmGcc9mQTxP3SwcqWz5fyCgY1BeMbzQX2xQCft2RLYGurg
+enr:-MS4QDBVNbVxl7Mq1KF9YgUHmGjsx8iS4VkpmXoUyjurmrsAXZjy1gZwFaKps2tUYi5K_FhM7jgRjK0VJ3deusc9vbxBh2F0dG5ldHOI__________-EZXRoMpChTr4sYAAAAP_JmjsAAAAAgmlkgnY0gmlwhJUckliEcXVpY4IjKYlzZWNwMjU2azGhAwykgyvrbu735nagDO1uNT6G3IkMNhYCeRP687U628fAiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
 ```
