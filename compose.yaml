@@ -32,6 +32,7 @@ services:
       - --metrics.port=6060
       - --port=30303
       - --discovery.port=30303
+      - --bootnodes=${EL_BOOTNODES}
     volumes:
       - ./execution-data:/execution-data
       - ./network-config:/network-config
@@ -71,6 +72,9 @@ services:
       - --metrics-allow-origin=*
       - --metrics-port=5054
       - --disable-peer-scoring
+      - --trusted-peers=${CL_TRUSTPEERS}
+      - --boot-nodes=${CL_BOOTNODES}
+      - --checkpoint-sync-url=${CL_CHECKPOINT}
     volumes:
       - ./consensus-data:/consensus-data 
       - ./network-config:/network-config
